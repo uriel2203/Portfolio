@@ -35,13 +35,6 @@ $app = Application::configure(basePath: dirname(__DIR__))
  */
 if (env('APP_ENV') === 'production') {
     $app->useStoragePath('/tmp');
-    
-    // Force bootstrap cache paths to /tmp
-    $app->useBootstrapPath('/tmp');
-    
-    // We can also override specific manifest paths if useBootstrapPath is not enough
-    $app->setCachedPackagesPath('/tmp/packages.php');
-    $app->setCachedServicesPath('/tmp/services.php');
 }
 
 return $app;
