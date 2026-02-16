@@ -15,7 +15,7 @@
             "dest": "/build/$1"
         },
         {
-            "src": "/(css|js|images|fonts)/(.*)",
+            "src": "/(css|js|image|images|fonts)/(.*)",
             "dest": "/$1/$2"
         },
         {
