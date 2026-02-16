@@ -40,7 +40,7 @@
         "SESSION_DRIVER": "cookie",
         "CACHE_STORE": "array",
         "FILESYSTEM_DISK": "public",
-        "APP_STORAGE": "/tmp",
+        "LARAVEL_STORAGE_PATH": "/tmp",
         "VIEW_COMPILED_PATH": "/tmp/views"
     }
 }

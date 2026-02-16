@@ -23,7 +23,6 @@ $app = Application::configure(basePath: dirname(__DIR__))
  */
 if (env('APP_ENV') === 'production') {
     $app->useStoragePath('/tmp');
-    config(['view.compiled' => '/tmp/views']);
 }
 
 return $app;
