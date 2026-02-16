@@ -41,6 +41,10 @@
         "CACHE_STORE": "array",
         "FILESYSTEM_DISK": "public",
         "LARAVEL_STORAGE_PATH": "/tmp",
-        "VIEW_COMPILED_PATH": "/tmp/views"
+        "VIEW_COMPILED_PATH": "/tmp/views",
+        "APP_PACKAGES_CACHE": "/tmp/packages.php",
+        "APP_SERVICES_CACHE": "/tmp/services.php",
+        "APP_CONFIG_CACHE": "/tmp/config.php",
+        "APP_ROUTES_CACHE": "/tmp/routes.php"
     }
 }
