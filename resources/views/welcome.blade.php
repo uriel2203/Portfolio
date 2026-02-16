@@ -213,9 +213,15 @@
     <body class="antialiased selection:bg-accent selection:text-white">
         
         <!-- Navbar -->
-        <header class="fixed top-0 left-0 w-full px-[9%] py-7 flex justify-between items-center z-50 glass-nav">
+        <header class="fixed top-0 left-0 w-full px-6 md:px-[9%] py-7 flex justify-between items-center z-50 glass-nav">
             <a href="#" class="text-2xl font-bold text-white cursor-default">Portfolio<span class="text-accent">.</span></a>
             
+            <!-- Hamburger Menu Button (Mobile Only) -->
+            <button id="menu-btn" class="md:hidden text-white hover:text-accent transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+
+            <!-- Desktop Nav -->
             <nav class="hidden md:flex items-center gap-8">
                 <a href="#home" class="text-lg font-medium text-white hover:text-accent transition">Home</a>
                 <a href="#about" class="text-lg font-medium text-white hover:text-accent transition">About</a>
@@ -229,48 +235,73 @@
                     </a>
                 </div>
             </nav>
+
+            <!-- Mobile Nav Container -->
+            <div id="mobile-menu" class="fixed top-[88px] left-0 w-full bg-bg/95 backdrop-blur-xl border-b border-accent/20 flex flex-col items-center py-10 gap-6 transform -translate-y-full opacity-0 pointer-events-none transition-all duration-300 md:hidden z-40">
+                <a href="#home" class="text-xl font-medium text-white hover:text-accent transition" onclick="toggleMenu()">Home</a>
+                <a href="#about" class="text-xl font-medium text-white hover:text-accent transition" onclick="toggleMenu()">About</a>
+                <a href="#certificates" class="text-xl font-medium text-white hover:text-accent transition" onclick="toggleMenu()">Certificates</a>
+                <a href="#projects" class="text-xl font-medium text-white hover:text-accent transition" onclick="toggleMenu()">Portfolio</a>
+                <a href="#experience" class="text-xl font-medium text-white hover:text-accent transition" onclick="toggleMenu()">Journey</a>
+                <a href="#contact" class="px-10 py-3 btn-neon rounded-full text-sm uppercase tracking-wider" onclick="toggleMenu()">Contact</a>
+            </div>
         </header>
 
+        <script>
+            function toggleMenu() {
+                const menu = document.getElementById('mobile-menu');
+                const isOpen = !menu.classList.contains('-translate-y-full');
+                
+                if (isOpen) {
+                    menu.classList.add('-translate-y-full', 'opacity-0', 'pointer-events-none');
+                } else {
+                    menu.classList.remove('-translate-y-full', 'opacity-0', 'pointer-events-none');
+                }
+            }
+
+            document.getElementById('menu-btn').addEventListener('click', toggleMenu);
+        </script>
+
         <!-- Hero Section -->
-        <section id="home" class="relative min-h-screen flex items-center bg-bg px-[9%] py-10">
-            <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 lg:items-center gap-12 pt-20">
-                <div class="space-y-6">
-                    <h3 class="text-3xl font-bold text-white">Hello, It's Me</h3>
-                    <h1 class="text-6xl md:text-8xl font-bold leading-tight text-white mb-2">{!! $profile->name !!}</h1>
-                    <h3 class="text-3xl font-bold text-white">And I'm a <span class="text-accent">{{ $profile->title }}</span></h3>
+        <section id="home" class="relative min-h-screen flex items-center bg-bg px-6 md:px-[9%] py-10">
+            <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 lg:items-center gap-12 pt-12 md:pt-20">
+                <div class="space-y-4 md:space-y-6 text-center lg:text-left order-2 lg:order-1">
+                    <h3 class="text-xl md:text-3xl font-bold text-white">Hello, It's Me</h3>
+                    <h1 class="text-4xl sm:text-6xl md:text-8xl font-bold leading-tight text-white mb-2">{!! $profile->name !!}</h1>
+                    <h3 class="text-xl md:text-3xl font-bold text-white">And I'm a <span class="text-accent">{{ $profile->title }}</span></h3>
                     
-                    <p class="text-lg text-white/70 max-w-xl leading-relaxed">
+                    <p class="text-base md:text-lg text-white/70 max-w-xl leading-relaxed mx-auto lg:mx-0">
                         {{ $profile->bio }}
                     </p>
 
-                    <div class="flex gap-4 mb-8">
+                    <div class="flex justify-center lg:justify-start gap-4 mb-4 md:mb-8">
                         @if($profile->facebook_link)
-                        <a href="{{ $profile->facebook_link }}" target="_blank" class="w-11 h-11 border-2 border-accent rounded-full flex items-center justify-center text-accent hover:bg-accent hover:text-black hover:shadow-[0_0_20px_#0ef] transition duration-500">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                        <a href="{{ $profile->facebook_link }}" target="_blank" class="w-10 h-10 md:w-11 md:h-11 border-2 border-accent rounded-full flex items-center justify-center text-accent hover:bg-accent hover:text-black hover:shadow-[0_0_20px_#0ef] transition duration-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
                         </a>
                         @endif
                         @if($profile->instagram_link)
-                        <a href="{{ $profile->instagram_link }}" target="_blank" class="w-11 h-11 border-2 border-accent rounded-full flex items-center justify-center text-accent hover:bg-accent hover:text-black hover:shadow-[0_0_20px_#0ef] transition duration-500">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        <a href="{{ $profile->instagram_link }}" target="_blank" class="w-10 h-10 md:w-11 md:h-11 border-2 border-accent rounded-full flex items-center justify-center text-accent hover:bg-accent hover:text-black hover:shadow-[0_0_20px_#0ef] transition duration-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                         </a>
                         @endif
                         @if($profile->linkedin_link)
-                        <a href="{{ $profile->linkedin_link }}" target="_blank" class="w-11 h-11 border-2 border-accent rounded-full flex items-center justify-center text-accent hover:bg-accent hover:text-black hover:shadow-[0_0_20px_#0ef] transition duration-500">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        <a href="{{ $profile->linkedin_link }}" target="_blank" class="w-10 h-10 md:w-11 md:h-11 border-2 border-accent rounded-full flex items-center justify-center text-accent hover:bg-accent hover:text-black hover:shadow-[0_0_20px_#0ef] transition duration-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                         </a>
                         @endif
                         @if($profile->github_link)
-                        <a href="{{ $profile->github_link }}" target="_blank" class="w-11 h-11 border-2 border-accent rounded-full flex items-center justify-center text-accent hover:bg-accent hover:text-black hover:shadow-[0_0_20px_#0ef] transition duration-500">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        <a href="{{ $profile->github_link }}" target="_blank" class="w-10 h-10 md:w-11 md:h-11 border-2 border-accent rounded-full flex items-center justify-center text-accent hover:bg-accent hover:text-black hover:shadow-[0_0_20px_#0ef] transition duration-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                         </a>
                         @endif
                     </div>
 
-                    <a href="{{ $profile->cv_link ?? '#' }}" class="inline-block px-10 py-3 btn-neon rounded-full text-lg">Download CV</a>
+                    <a href="{{ $profile->cv_link ?? '#' }}" class="inline-block px-8 py-3 md:px-10 md:py-3 btn-neon rounded-full text-base md:text-lg">Download CV</a>
                 </div>
                 
-                <div class="flex justify-center lg:justify-end">
-                    <div class="hex-frame w-80 h-80 md:w-[450px] md:h-[450px]">
+                <div class="flex justify-center lg:justify-end order-1 lg:order-2">
+                    <div class="hex-frame w-64 h-64 sm:w-80 sm:h-80 md:w-[450px] md:h-[450px]">
                         <img src="{{ $profile->image ?? asset('image/uriell.jpg') }}" alt="{{ strip_tags($profile->name) }}">
                     </div>
                 </div>
@@ -278,32 +309,32 @@
         </section>
 
         <!-- About Section -->
-        <section id="about" class="bg-bg-lighter py-32 px-[9%] border-y border-white/5">
-            <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 lg:items-center gap-16 lg:gap-32">
-                <div class="flex justify-center lg:justify-start order-2 lg:order-1">
-                    <div class="hex-frame w-72 h-72 md:w-[400px] md:h-[400px]">
+        <section id="about" class="bg-bg-lighter py-20 md:py-32 px-6 md:px-[9%] border-y border-white/5">
+            <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 lg:items-center gap-12 md:gap-16 lg:gap-32">
+                <div class="flex justify-center lg:justify-start order-2 lg:order-1 text-center lg:text-left">
+                    <div class="hex-frame w-56 h-56 sm:w-72 sm:h-72 md:w-[400px] md:h-[400px]">
                         <img src="{{ $profile->image ?? asset('image/uriell.jpg') }}" alt="About {{ strip_tags($profile->name) }}">
                     </div>
                 </div>
 
-                <div class="space-y-8 order-1 lg:order-2">
-                    <h2 class="text-6xl font-bold text-white mb-4">About <span class="text-accent">Me</span></h2>
-                    <h3 class="text-2xl font-bold text-white tracking-wide">{{ $profile->title }} Specialist!</h3>
+                <div class="space-y-6 md:space-y-8 order-1 lg:order-2 text-center lg:text-left">
+                    <h2 class="text-4xl md:text-6xl font-bold text-white mb-4">About <span class="text-accent">Me</span></h2>
+                    <h3 class="text-xl md:text-2xl font-bold text-white tracking-wide">{{ $profile->title }} Specialist!</h3>
                     
-                    <div class="space-y-6 text-white/70 text-lg leading-relaxed italic font-medium">
+                    <div class="space-y-4 md:space-y-6 text-white/70 text-base md:text-lg leading-relaxed italic font-medium">
                         <p>{{ $profile->bio }}</p>
                     </div>
-                    <a href="#" class="inline-block px-10 py-3 btn-neon rounded-full text-lg mt-4">Read More</a>
+                    <a href="#" class="inline-block px-8 py-3 md:px-10 md:py-3 btn-neon rounded-full text-base md:text-lg mt-4">Read More</a>
                 </div>
             </div>
         </section>
 
         <!-- Credentials Section (Certificates) - SHORTER LAYOUT -->
-        <section id="certificates" class="bg-bg py-32 px-[9%]">
-            <div class="max-w-7xl mx-auto w-full text-center space-y-16">
-                <h2 class="text-6xl font-bold text-white"><span class="text-white">ITS</span> <span class="text-accent">Certificates</span></h2>
+        <section id="certificates" class="bg-bg py-20 md:py-32 px-6 md:px-[9%]">
+            <div class="max-w-7xl mx-auto w-full text-center space-y-12 md:space-y-16">
+                <h2 class="text-4xl md:text-6xl font-bold text-white"><span class="text-white">ITS</span> <span class="text-accent">Certificates</span></h2>
 
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
                     @foreach($certificates as $certificate)
                     <div onclick="zoomCertificate('{{ $certificate->image ?? asset('image/uriell.jpg') }}')" class="relative rounded-[1.5rem] overflow-hidden group border border-white/10 hover:border-accent transition duration-500 shadow-xl h-48 bg-white/[0.03] backdrop-blur-xl cursor-pointer">
                         <!-- Background Image -->
@@ -338,12 +369,10 @@
             </div>
         </section>
 
-
-
         <!-- Projects Section -->
-        <section id="projects" class="bg-bg-lighter py-32 px-[9%] border-y border-white/5">
-            <div class="max-w-7xl mx-auto w-full text-center space-y-16">
-                <h2 class="text-6xl font-bold text-white">Latest <span class="text-accent">Projects</span></h2>
+        <section id="projects" class="bg-bg-lighter py-20 md:py-32 px-6 md:px-[9%] border-y border-white/5">
+            <div class="max-w-7xl mx-auto w-full text-center space-y-12 md:space-y-16">
+                <h2 class="text-4xl md:text-6xl font-bold text-white">Latest <span class="text-accent">Projects</span></h2>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     @foreach($projects as $project)
@@ -365,29 +394,29 @@
         </section>
 
         <!-- Journey Section -->
-        <section id="experience" class="bg-bg py-32 px-[9%] border-t border-white/5">
+        <section id="experience" class="bg-bg py-20 md:py-32 px-6 md:px-[9%] border-t border-white/5">
             <div class="max-w-7xl mx-auto w-full">
-                <div class="grid lg:grid-cols-12 gap-16">
+                <div class="grid lg:grid-cols-12 gap-12 md:gap-16">
                     <!-- Left Sidebar Header -->
-                    <div class="lg:col-span-4 space-y-8 lg:sticky lg:top-40 h-fit">
+                    <div class="lg:col-span-4 space-y-6 md:space-y-8 lg:sticky lg:top-40 h-fit text-center lg:text-left">
                         <p class="text-[11px] uppercase tracking-[0.5em] text-accent font-bold">The Journey</p>
-                        <h2 class="text-6xl font-serif italic text-white leading-tight">Building the <br> future through <br> technology.</h2>
+                        <h2 class="text-4xl md:text-6xl font-serif italic text-white leading-tight">Building the <br class="hidden lg:block"> future through <br class="hidden lg:block"> technology.</h2>
                     </div>
 
                     <!-- Experience List -->
-                    <div class="lg:col-span-8 space-y-20">
+                    <div class="lg:col-span-8 space-y-12 md:space-y-20">
                         @foreach($experiences as $experience)
-                        <div class="grid md:grid-cols-12 gap-8 group">
+                        <div class="grid md:grid-cols-12 gap-4 md:gap-8 group">
                             <div class="md:col-span-3">
                                 <p class="text-sm font-medium text-white/40 group-hover:text-accent transition duration-500 pt-2">{{ $experience->year }}</p>
                             </div>
                             <div class="md:col-span-9 space-y-4">
-                                <div class="flex justify-between items-baseline">
-                                    <h3 class="text-3xl font-bold text-white group-hover:text-accent transition duration-500">{{ $experience->role }}</h3>
+                                <div class="flex flex-col md:flex-row justify-between md:items-baseline gap-2">
+                                    <h3 class="text-2xl md:text-3xl font-bold text-white group-hover:text-accent transition duration-500">{{ $experience->role }}</h3>
                                     <span class="text-[10px] uppercase tracking-widest text-white/30 font-bold group-hover:text-white/60 transition duration-500">{{ $experience->company }}</span>
                                 </div>
-                                <div class="border-l border-white/10 pl-8 transition duration-500 group-hover:border-accent/30 py-2">
-                                    <p class="text-white/50 leading-relaxed italic font-medium text-lg">
+                                <div class="border-l border-white/10 pl-6 md:pl-8 transition duration-500 group-hover:border-accent/30 py-2">
+                                    <p class="text-white/50 leading-relaxed italic font-medium text-base md:text-lg">
                                         {{ $experience->description }}
                                     </p>
                                 </div>
@@ -400,30 +429,30 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="bg-bg-lighter py-32 px-[9%] border-t border-white/5">
+        <section id="contact" class="bg-bg-lighter py-20 md:py-32 px-6 md:px-[9%] border-t border-white/5">
             <div class="max-w-7xl mx-auto w-full">
-                <div class="grid lg:grid-cols-2 gap-24 items-start">
-                    <div class="space-y-20">
-                        <div class="space-y-8">
+                <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+                    <div class="space-y-12 md:space-y-20 text-center lg:text-left">
+                        <div class="space-y-6 md:space-y-8">
                             <p class="text-[11px] uppercase tracking-[0.5em] text-accent font-bold">Establish Contact</p>
-                            <h2 class="text-7xl font-serif italic text-white leading-tight">Let's create the <br> extraordinary.</h2>
+                            <h2 class="text-5xl md:text-7xl font-serif italic text-white leading-tight">Let's create the <br class="hidden lg:block"> extraordinary.</h2>
                         </div>
 
-                        <div class="space-y-12">
+                        <div class="space-y-8 md:space-y-12">
                             <div class="space-y-4">
                                 <p class="text-[10px] uppercase tracking-[0.5em] text-white/30 font-bold">The Studio</p>
                                 <div class="space-y-2">
-                                    <p class="text-xl text-white font-medium hover:text-accent transition cursor-pointer">{{ $profile->email }}</p>
-                                    <p class="text-xl text-white font-medium">{{ $profile->phone }}</p>
-                                    <p class="text-xl text-white font-medium">{{ $profile->address }}</p>
+                                    <p class="text-lg md:text-xl text-white font-medium hover:text-accent transition cursor-pointer break-all">{{ $profile->email }}</p>
+                                    <p class="text-lg md:text-xl text-white font-medium">{{ $profile->phone }}</p>
+                                    <p class="text-lg md:text-xl text-white font-medium">{{ $profile->address }}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="relative pt-12">
-                        <form action="#" class="space-y-16">
-                            <div class="grid md:grid-cols-2 gap-16">
+                    <div class="relative pt-4 md:pt-12">
+                        <form action="#" class="space-y-12 md:space-y-16">
+                            <div class="grid md:grid-cols-2 gap-12 md:gap-16">
                                 <div class="relative group">
                                     <input type="text" id="name" required class="w-full bg-bg-lighter border-b border-white/10 py-4 focus:outline-none focus:border-accent transition-colors peer text-white placeholder-transparent">
                                     <label for="name" class="absolute left-0 top-4 text-[11px] uppercase tracking-widest text-white/30 font-black transition-all peer-focus:-top-4 peer-focus:text-accent peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-accent">Full Name</label>
@@ -438,8 +467,8 @@
                                 <label for="message" class="absolute left-0 top-4 text-[11px] uppercase tracking-widest text-white/30 font-black transition-all peer-focus:-top-4 peer-focus:text-accent peer-[:not(:placeholder-shown)]:-top-4 peer-[:not(:placeholder-shown)]:text-accent">Brief Outline</label>
                             </div>
 
-                            <div class="flex justify-end pt-8">
-                                <button type="submit" class="group flex items-center gap-6 bg-white text-black px-12 py-5 rounded-full font-bold uppercase tracking-widest text-[11px] hover:bg-accent transition-all duration-500 overflow-hidden relative">
+                            <div class="flex justify-center lg:justify-end pt-8">
+                                <button type="submit" class="group flex items-center gap-6 bg-white text-black px-10 py-4 md:px-12 md:py-5 rounded-full font-bold uppercase tracking-widest text-[11px] hover:bg-accent transition-all duration-500 overflow-hidden relative">
                                     <span class="relative z-10">Initiate Brief</span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="relative z-10 transition-transform group-hover:translate-x-2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                                 </button>
