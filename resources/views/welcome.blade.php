@@ -750,9 +750,9 @@
 
                 <div class="grid lg:grid-cols-12 gap-8 lg:gap-12">
                     <!-- Left: Info Cards -->
-                    <div class="lg:col-span-4 space-y-4">
+                    <div class="lg:col-span-4 flex flex-col gap-4 h-full">
                         <!-- Email Card -->
-                        <div class="group relative bg-[var(--card-bg)] border border-[var(--border-color)] rounded-[2rem] p-6 hover:border-accent-purple/50 transition-all duration-500 overflow-hidden">
+                        <div class="group relative bg-[var(--card-bg)] border border-[var(--border-color)] rounded-[2rem] p-6 hover:border-accent-purple/50 transition-all duration-500 overflow-hidden flex-1 flex flex-col justify-center">
                             <div class="relative z-10 space-y-4">
                                 <div class="w-10 h-10 rounded-xl bg-accent-purple/10 flex items-center justify-center text-accent-purple">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
@@ -770,7 +770,7 @@
                         </div>
 
                         <!-- Location Card -->
-                        <div class="group relative bg-[var(--card-bg)] border border-[var(--border-color)] rounded-[2rem] p-6 hover:border-accent-pink/50 transition-all duration-500 overflow-hidden">
+                        <div class="group relative bg-[var(--card-bg)] border border-[var(--border-color)] rounded-[2rem] p-6 hover:border-accent-pink/50 transition-all duration-500 overflow-hidden flex-1 flex flex-col justify-center">
                             <div class="relative z-10 space-y-4">
                                 <div class="w-10 h-10 rounded-xl bg-accent-pink/10 flex items-center justify-center text-accent-pink">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
@@ -783,7 +783,7 @@
                         </div>
 
                         <!-- University Card -->
-                        <div class="group relative bg-[var(--card-bg)] border border-[var(--border-color)] rounded-[2rem] p-6 hover:border-accent-purple/50 transition-all duration-500 overflow-hidden">
+                        <div class="group relative bg-[var(--card-bg)] border border-[var(--border-color)] rounded-[2rem] p-6 hover:border-accent-purple/50 transition-all duration-500 overflow-hidden flex-1 flex flex-col justify-center">
                             <div class="relative z-10 space-y-4">
                                 <div class="w-10 h-10 rounded-xl bg-accent-purple/10 flex items-center justify-center text-accent-purple">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
