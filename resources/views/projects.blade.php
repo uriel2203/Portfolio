@@ -14,6 +14,15 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet">
 
+        <script>
+            // Immediate theme check to prevent flash
+            (function() {
+                if (localStorage.getItem('theme') === 'light') {
+                    document.documentElement.classList.add('light');
+                }
+            })();
+        </script>
+
         <!-- Tailwind Play CDN -->
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
@@ -326,11 +335,6 @@
 
             // Initialize all project contents
             document.addEventListener('DOMContentLoaded', () => {
-                // Restore theme from main page preference
-                if (localStorage.getItem('theme') === 'light') {
-                    document.documentElement.classList.add('light');
-                }
-
                 Object.keys(projects).forEach(id => {
                     const container = document.getElementById(id + '-content');
                     if (container) {

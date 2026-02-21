@@ -14,6 +14,15 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet">
 
+        <script>
+            // Immediate theme check to prevent flash
+            (function() {
+                if (localStorage.getItem('theme') === 'light') {
+                    document.documentElement.classList.add('light');
+                }
+            })();
+        </script>
+
         <!-- Tailwind Play CDN -->
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
@@ -535,7 +544,7 @@
                         <p class="text-accent-purple text-xs font-bold tracking-[0.4em] uppercase">Portfolio</p>
                         <h2 class="text-4xl md:text-5xl font-bold text-[var(--text-main)]">Selected <span class="text-gradient">Works</span></h2>
                     </div>
-                    <a href="{{ route('projects') }}" target="_blank" class="text-sm font-bold text-[var(--text-muted)] hover:text-[var(--text-main)] transition flex items-center gap-2 group">
+                    <a href="{{ route('projects') }}" class="text-sm font-bold text-[var(--text-muted)] hover:text-[var(--text-main)] transition flex items-center gap-2 group">
                         View All
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                     </a>
@@ -1156,11 +1165,19 @@
                 }
             }
 
-            // Initialize theme
+            // Initialize theme UI elements
             document.addEventListener('DOMContentLoaded', () => {
-                const savedTheme = localStorage.getItem('theme');
-                if (savedTheme === 'light') {
-                    toggleTheme();
+                const icon = document.getElementById('theme-icon');
+                const iconMobile = document.getElementById('theme-icon-mobile');
+                const moonIcon = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+                const sunIcon = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="18.36" x2="5.64" y2="19.78"></line><line x1="18.36" y1="4.22" x2="19.78" y2="5.64"></line>';
+
+                if (document.documentElement.classList.contains('light')) {
+                    if(icon) icon.innerHTML = moonIcon;
+                    if(iconMobile) iconMobile.innerHTML = moonIcon;
+                } else {
+                    if(icon) icon.innerHTML = sunIcon;
+                    if(iconMobile) iconMobile.innerHTML = sunIcon;
                 }
             });
 
