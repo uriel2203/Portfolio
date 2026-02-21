@@ -17,8 +17,11 @@
         <script>
             // Immediate theme check to prevent flash
             (function() {
-                if (localStorage.getItem('theme') === 'light') {
-                    document.documentElement.classList.add('light');
+                const theme = localStorage.getItem('theme');
+                if (theme === 'light') {
+                    document.documentElement.classList.remove('dark');
+                } else {
+                    document.documentElement.classList.add('dark');
                 }
             })();
         </script>
@@ -27,6 +30,7 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
             tailwind.config = {
+                darkMode: 'class',
                 theme: {
                     extend: {
                         fontFamily: {
@@ -34,10 +38,14 @@
                             outfit: ['Outfit', 'sans-serif'],
                         },
                         colors: {
-                            'dark-bg': '#09090b',
-                            'accent-primary': '#fafafa',
-                            'accent-secondary': '#71717a',
+                            'dark-bg': '#030712',
+                            'accent-primary': '#0ea5e9',
+                            'accent-secondary': '#06b6d4',
+                            'accent-vibrant': '#f59e0b',
                         },
+                        backgroundImage: {
+                            'primary-gradient': 'linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%)',
+                        }
                     }
                 }
             }
@@ -45,25 +53,27 @@
 
         <style>
             :root {
-                --primary-bg: #09090b;
-                --accent-primary: #fafafa;
-                --accent-secondary: #71717a;
-                --card-bg: rgba(24, 24, 27, 0.4);
-                --text-main: #fafafa;
-                --text-muted: rgba(250, 250, 250, 0.5);
-                --border-color: rgba(255, 255, 255, 0.1);
-                --glass-nav: rgba(9, 9, 11, 0.8);
+                --primary-bg: #f9fafb;
+                --accent-primary: #0284c7;
+                --accent-secondary: #0891b2;
+                --accent-vibrant: #f59e0b;
+                --card-bg: rgba(255, 255, 255, 0.7);
+                --text-main: #111827;
+                --text-muted: #4b5563;
+                --border-color: rgba(0, 0, 0, 0.18);
+                --glass-nav: rgba(249, 250, 251, 0.9);
             }
 
-            html.light {
-                --primary-bg: #ffffff;
-                --card-bg: rgba(244, 244, 245, 0.9);
-                --text-main: #09090b;
-                --text-muted: #52525b;
-                --border-color: rgba(0, 0, 0, 0.1);
-                --glass-nav: rgba(255, 255, 255, 0.9);
-                --accent-primary: #18181b;
-                --accent-secondary: #52525b;
+            .dark {
+                --primary-bg: #030712;
+                --accent-primary: #0ea5e9;
+                --accent-secondary: #06b6d4;
+                --accent-vibrant: #f59e0b;
+                --card-bg: rgba(17, 24, 39, 0.4);
+                --text-main: #f9fafb;
+                --text-muted: #9ca3af;
+                --border-color: rgba(255, 255, 255, 0.08);
+                --glass-nav: rgba(3, 7, 18, 0.8);
             }
 
             body { 
@@ -92,15 +102,29 @@
                 border-radius: 10px;
             }
             .custom-scrollbar::-webkit-scrollbar-thumb {
-                background: rgba(14, 165, 233, 0.2);
+                background: var(--accent-primary);
                 border-radius: 10px;
+                opacity: 0.3;
             }
             .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-                background: rgba(14, 165, 233, 0.4);
+                background: var(--accent-secondary);
+            }
+
+            #scroll-progress {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background: linear-gradient(to right, var(--accent-primary), var(--accent-secondary));
+                transform-origin: 0%;
+                z-index: 100;
             }
         </style>
+        <script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
     </head>
-    <body class="antialiased selection:bg-accent-primary selection:text-zinc-900 custom-scrollbar">
+    <body class="antialiased selection:bg-accent-primary selection:text-white custom-scrollbar">
+        <div id="scroll-progress"></div>
         
         <!-- Minimal Nav -->
         <header class="fixed top-0 left-0 w-full px-6 md:px-[9%] py-6 flex justify-between items-center z-50 backdrop-blur-xl border-b border-[var(--border-color)] bg-[var(--primary-bg)]/80">
@@ -108,6 +132,10 @@
                 <span class="text-accent-secondary">&lt;</span>Back to Portfolio<span class="text-accent-secondary">/&gt;</span>
             </a>
             <div class="flex items-center gap-6">
+                <!-- Theme Toggle -->
+                <button onclick="toggleTheme()" class="w-12 h-12 rounded-2xl bg-[var(--card-bg)] border border-[var(--border-color)] flex items-center justify-center text-[var(--text-main)] hover:border-accent-primary transition duration-300">
+                    <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></svg>
+                </button>
                 <div class="hidden md:block">
                     <span class="text-[10px] font-black text-accent-primary uppercase tracking-[0.3em]">Project Archive</span>
                 </div>
@@ -133,7 +161,7 @@
 
                     <div class="relative z-10 grid lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-20 items-start">
                         <!-- Info Panel -->
-                        <div class="space-y-8 sticky top-32">
+                        <div class="space-y-8 lg:sticky lg:top-32">
                             <div class="space-y-4">
                                 <div class="flex items-center gap-3">
                                     <span class="text-accent-primary font-mono text-sm underline underline-offset-8">0{{ $index + 1 }}</span>
@@ -152,7 +180,7 @@
                                     Source Repository
                                 </a>
                                 @endif
-                                <button onclick="scrollToDemo('{{ $project->demo_id }}-gallery')" class="px-6 py-3 bg-accent-primary/10 border border-accent-primary/30 text-accent-primary rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-accent-primary hover:text-white transition flex items-center gap-3">
+                                <button onclick="scrollToDemo('{{ $project->demo_id }}-gallery')" class="h-12 px-8 bg-accent-primary/10 border border-accent-primary/30 text-accent-primary rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-accent-primary hover:text-white transition flex items-center gap-3 hover:shadow-[0_0_20px_rgba(14,165,233,0.3)]">
                                     View Showcase
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="rotate-90"><polyline points="6 9 12 15 18 9"></polyline></svg>
                                 </button>
@@ -160,7 +188,7 @@
                         </div>
 
                         <!-- Content Panel / Showcase -->
-                        <div id="{{ $project->demo_id }}-gallery" class="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-[3rem] p-8 md:p-12 space-y-20 relative overflow-hidden backdrop-blur-sm">
+                        <div id="{{ $project->demo_id }}-gallery" class="bg-[var(--card-bg)] border border-[var(--border-color)] rounded-[2.5rem] md:rounded-[3rem] p-4 md:p-12 space-y-12 md:space-y-20 relative overflow-hidden backdrop-blur-sm">
                             <div class="absolute top-0 right-0 p-8 flex gap-2">
                                 <div class="w-2.5 h-2.5 rounded-full bg-red-400/30"></div>
                                 <div class="w-2.5 h-2.5 rounded-full bg-yellow-400/30"></div>
@@ -215,7 +243,7 @@
                         </div>
                         <div class="px-4 space-y-3">
                             <h5 class="text-[var(--text-main)] font-black text-xs uppercase tracking-widest flex items-center gap-3">
-                                <span class="w-2 h-2 rounded-full bg-accent-primary shadow-[0_0_10px_rgba(139,92,246,0.5)]"></span>
+                                <span class="w-2 h-2 rounded-full bg-accent-primary shadow-[0_0_10px_rgba(14,165,233,0.5)]"></span>
                                 ${title}
                             </h5>
                             <p class="text-[10px] text-[var(--text-muted)] leading-relaxed font-medium uppercase tracking-[0.05em]">${desc}</p>
@@ -343,6 +371,60 @@
                         container.innerHTML = projects[id];
                     }
                 });
+
+                // Initialize theme UI
+                const icon = document.getElementById('theme-icon');
+                const moonIcon = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+                const sunIcon = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="18.36" x2="5.64" y2="19.78"></line><line x1="18.36" y1="4.22" x2="19.78" y2="5.64"></line>';
+
+                if (!document.documentElement.classList.contains('dark')) {
+                    if(icon) icon.innerHTML = moonIcon;
+                } else {
+                    if(icon) icon.innerHTML = sunIcon;
+                }
+            });
+
+            function toggleTheme() {
+                const html = document.documentElement;
+                const icon = document.getElementById('theme-icon');
+                const isDark = html.classList.toggle('dark');
+                
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                
+                const moonIcon = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+                const sunIcon = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="18.36" x2="5.64" y2="19.78"></line><line x1="18.36" y1="4.22" x2="19.78" y2="5.64"></line>';
+
+                if (!isDark) {
+                    if(icon) icon.innerHTML = moonIcon;
+                } else {
+                    if(icon) icon.innerHTML = sunIcon;
+                }
+            }
+
+            // Motion Animations
+            const { animate, scroll, inView } = Motion;
+            
+            // 1. Scroll Progress
+            scroll(animate("#scroll-progress", { scaleX: [0, 1] }));
+
+            // 2. Horizontal Entry for Titles
+            document.querySelectorAll('h2').forEach(title => {
+                inView(title, ({ target }) => {
+                    animate(
+                        target,
+                        { opacity: [0, 1], x: [-50, 0] },
+                        { duration: 1, easing: "ease-out" }
+                    );
+                });
+            });
+
+            // 3. Staggered reveal for projects
+            inView("section", ({ target }) => {
+                animate(
+                    target,
+                    { opacity: [0, 1], y: [50, 0] },
+                    { duration: 0.8, easing: "ease-out" }
+                );
             });
         </script>
     </body>

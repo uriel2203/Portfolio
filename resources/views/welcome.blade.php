@@ -355,8 +355,8 @@
                     
                 </div>
                 
-                <div class="relative order-1 lg:order-2">
-                    <div class="relative rounded-[3rem] overflow-hidden border border-[var(--border-color)] group shadow-2xl max-w-[80%] mx-auto lg:ml-auto">
+                <div class="relative order-1 lg:order-2 flex justify-center">
+                    <div class="relative rounded-[3rem] overflow-hidden border border-[var(--border-color)] group shadow-2xl w-full max-w-[320px] lg:max-w-[80%] lg:ml-auto">
                         <img src="{{ $profile->image }}" alt="John" class="w-full aspect-[4/5] object-cover transition duration-1000 group-hover:scale-105">
                     </div>
 
@@ -1587,12 +1587,11 @@
             // 1. Scroll Progress Bar
             scroll(animate("#scroll-progress", { scaleX: [0, 1] }));
 
-            // 2. Parallax Hero Image Focus
+            // 2. Parallax Hero Image Focus (Only scale, no rotation for straight look)
             const heroImage = document.querySelector('#home img');
             if(heroImage) {
                 scroll(animate(heroImage, { 
-                    scale: [1, 1.15],
-                    rotate: [2, 0]
+                    scale: [1, 1.15]
                 }, { target: document.querySelector('#home') }));
             }
 
