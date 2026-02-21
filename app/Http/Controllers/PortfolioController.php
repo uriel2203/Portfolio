@@ -12,7 +12,7 @@ class PortfolioController extends Controller
             'name' => 'Uriel <br> <span class="italic">John.</span>',
             'title' => 'Information Technology Student',
             'bio' => 'Specialize in developing complex IT infrastructures and technical solutions that bridge high-performance engineering with modern digital efficiency.',
-            'image' => asset('image/uriell.png'),
+            'image' => asset('image/uriell.jpg'),
             'cv_link' => '#',
             'facebook_link' => '#',
             'instagram_link' => '#',
