@@ -310,8 +310,7 @@
                 
                 <div class="relative order-1 lg:order-2">
                     <div class="relative rounded-[3rem] overflow-hidden border border-[var(--border-color)] group shadow-2xl max-w-[80%] mx-auto lg:ml-auto">
-                        <img src="{{ $profile->image }}" alt="John" class="w-full aspect-[4/5] object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition duration-1000 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-[#05010d] via-transparent to-transparent opacity-60"></div>
+                        <img src="{{ $profile->image }}" alt="John" class="w-full aspect-[4/5] object-cover transition duration-1000 group-hover:scale-105">
                     </div>
 
                     <!-- Floating Terminal Card -->
