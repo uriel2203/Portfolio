@@ -760,7 +760,7 @@
                             
                             <div class="flex items-center gap-6">
                                 @if(isset($project->demo_id))
-                                <button onclick="openProjectDemo('{{ $project->demo_id }}')" class="px-8 py-3.5 bg-[var(--primary-bg)] border border-[var(--border-color)] text-[var(--text-main)] rounded-2xl text-[10px] font-black uppercase tracking-widest hover:scale-105 hover:border-accent-purple/50 hover:shadow-[0_0_30px_rgba(139,92,246,0.2)] transition-all duration-300">
+                                <button onclick="openProjectDemo('{{ $project->demo_id }}')" class="px-8 py-3.5 bg-[var(--primary-bg)] border border-accent-purple/30 text-[var(--text-main)] rounded-2xl text-[10px] font-black uppercase tracking-widest hover:scale-105 hover:border-accent-purple hover:shadow-[0_0_30px_rgba(139,92,246,0.3)] transition-all duration-300">
                                     View Project Case Study
                                 </button>
                                 @endif
