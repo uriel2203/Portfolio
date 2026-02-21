@@ -176,7 +176,8 @@
             'title' => 'Social Welfare Distribution',
             'description' => 'An online platform for efficient management and transparent distribution of social welfare assistance. I am one of the developers (Back-end) for this reliable, cloud-based solution.',
             'image' => asset('image/social welfare.jpg'),
-            'github_link' => 'https://github.com/KEmsss11/NEW-FINAL-16'
+            'github_link' => 'https://github.com/KEmsss11/NEW-FINAL-16',
+            'demo_id' => 'welfare-demo'
         ],
         (object)[
             'title' => 'Sellio: Android Marketplace',
@@ -1453,6 +1454,92 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mt-8">
                                     ${createAppFrame('blockchain_review.jpg', 'Immutable Ledger Reviews', 'Blockchain-stored feedback that cannot be altered or falsified by third parties.', true)}
                                     ${createAppFrame('transaction_details.jpg', 'Public Audit Trail', 'Complete cryptographic record of all successful transaction milestones.', true)}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } else if (demoId === 'welfare-demo') {
+                    title.textContent = 'Social Welfare System';
+                    content.innerHTML = `
+                        <div class="space-y-20 pb-20">
+                            <!-- Hero Section (Welfare) -->
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                                <div class="space-y-8">
+                                    <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-accent-pink/10 border border-accent-pink/20">
+                                        <svg class="text-accent-pink" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                                        <span class="text-[10px] font-black uppercase tracking-widest text-accent-pink">Cloud-Based Web Solution</span>
+                                    </div>
+                                    <div class="space-y-4">
+                                        <h3 class="text-5xl font-black text-[var(--text-main)] leading-tight">Social <span class="text-gradient">Welfare</span> Distribution</h3>
+                                        <p class="text-[var(--text-muted)] text-lg leading-relaxed max-w-xl">A mission-critical platform engineered for high-integrity public service. Streamlining the lifecycle of assistance from initial application to final verification with full back-end transparency.</p>
+                                    </div>
+                                    
+                                    <div class="flex flex-wrap gap-4">
+                                        <div class="px-6 py-4 rounded-[2rem] bg-[var(--text-main)]/5 border border-[var(--border-color)] backdrop-blur-sm">
+                                            <h4 class="text-cyan-400 text-[8px] font-black uppercase tracking-widest mb-1">My Component</h4>
+                                            <p class="text-[var(--text-main)] font-bold text-sm">Back-end Developer</p>
+                                        </div>
+                                        <div class="px-6 py-4 rounded-[2rem] bg-[var(--text-main)]/5 border border-[var(--border-color)] backdrop-blur-sm">
+                                            <h4 class="text-accent-purple text-[8px] font-black uppercase tracking-widest mb-1">Deployment</h4>
+                                            <p class="text-[var(--text-main)] font-bold text-sm">Enterprise Web Scalability</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="relative group">
+                                    <div class="absolute -inset-4 bg-accent-pink/20 blur-3xl opacity-50 group-hover:opacity-100 transition duration-1000"></div>
+                                    <div class="relative aspect-video rounded-[3rem] overflow-hidden border border-[var(--border-color)] shadow-2xl bg-[#0b011d]">
+                                        <img src="{{ asset('image/social welfare.jpg') }}" class="w-full h-full object-cover object-top hover:scale-110 transition-transform duration-700">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-8">
+                                            <p class="text-white font-black text-[10px] uppercase tracking-widest">Welfare Management Suite</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Showcase: Infrastructure -->
+                            <div class="space-y-12">
+                                <div class="text-center space-y-2">
+                                    <h4 class="text-2xl font-black text-[var(--text-main)] uppercase tracking-tighter">I. Core Infrastructure</h4>
+                                    <div class="w-20 h-1 bg-accent-pink mx-auto rounded-full"></div>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                                    ${createWebFrame('loginwelfare.png', 'Authentication Gateway', 'Secure portal for administrative and professional access points.')}
+                                    ${createWebFrame('dashboard.png', 'Operations Dashboard', 'Real-time overview of system metrics and current help requests.')}
+                                </div>
+                            </div>
+
+                            <!-- Showcase: Operations -->
+                            <div class="space-y-12">
+                                <div class="text-center space-y-2">
+                                    <h4 class="text-2xl font-black text-[var(--text-main)] uppercase tracking-tighter">II. Operational Intelligence</h4>
+                                    <div class="w-20 h-1 bg-cyan-400 mx-auto rounded-full"></div>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                                    ${createWebFrame('applicant.png', 'Entity Management', 'Comprehensive user profiles tracking history and eligibility.')}
+                                    ${createWebFrame('application.png', 'Case Workflow', 'Dynamic processing system for assistance requests and approvals.')}
+                                </div>
+                            </div>
+
+                            <!-- Showcase: Resources -->
+                            <div class="space-y-12">
+                                <div class="text-center space-y-2">
+                                    <h4 class="text-2xl font-black text-[var(--text-main)] uppercase tracking-tighter">III. Resource Orchestration</h4>
+                                    <div class="w-20 h-1 bg-accent-purple mx-auto rounded-full"></div>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                                    ${createWebFrame('consultation.png', 'Service Logging', 'Detailed auditing of interactions and professional consultations.')}
+                                    ${createWebFrame('stocks.png', 'Inventory Logic', 'Back-end management for physical resource distribution.')}
+                                </div>
+                            </div>
+
+                            <!-- Showcase: Verification -->
+                            <div class="space-y-12">
+                                <div class="text-center space-y-2">
+                                    <h4 class="text-2xl font-black text-[var(--text-main)] uppercase tracking-tighter">IV. Document Integrity</h4>
+                                    <div class="w-20 h-1 bg-accent-pink mx-auto rounded-full"></div>
+                                </div>
+                                <div class="max-w-4xl mx-auto">
+                                    ${createWebFrame('certficate.png', 'Credential Generation', 'Automated issuance of high-trust verification and eligibility documents.', true)}
                                 </div>
                             </div>
                         </div>
