@@ -14,6 +14,15 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet">
 
+        <script>
+            // Immediate theme check to prevent flash
+            (function() {
+                if (localStorage.getItem('theme') === 'light') {
+                    document.documentElement.classList.add('light');
+                }
+            })();
+        </script>
+
         <!-- Tailwind Play CDN -->
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
@@ -43,6 +52,16 @@
                 --text-main: #ffffff;
                 --text-muted: rgba(255, 255, 255, 0.4);
                 --border-color: rgba(255, 255, 255, 0.05);
+                --glass-nav: rgba(5, 1, 13, 0.7);
+            }
+
+            html.light {
+                --primary-bg: #FAFAF9;
+                --card-bg: rgba(255, 255, 255, 0.8);
+                --text-main: #0a0a0a;
+                --text-muted: #525252;
+                --border-color: rgba(0, 0, 0, 0.15);
+                --glass-nav: rgba(250, 250, 249, 0.95);
             }
 
             body { 
@@ -54,6 +73,7 @@
                     radial-gradient(circle at 10% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 40%),
                     radial-gradient(circle at 90% 80%, rgba(236, 72, 153, 0.1) 0%, transparent 40%);
                 background-attachment: fixed;
+                transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             }
             
             .text-gradient {
@@ -81,12 +101,14 @@
     <body class="antialiased selection:bg-accent-purple selection:text-white custom-scrollbar">
         
         <!-- Minimal Nav -->
-        <header class="fixed top-0 left-0 w-full px-6 md:px-[9%] py-6 flex justify-between items-center z-50 backdrop-blur-xl border-b border-[var(--border-color)]">
+        <header class="fixed top-0 left-0 w-full px-6 md:px-[9%] py-6 flex justify-between items-center z-50 backdrop-blur-xl border-b border-[var(--border-color)] bg-[var(--primary-bg)]/80">
             <a href="/" class="text-xl font-bold text-[var(--text-main)] flex items-center gap-1 hover:opacity-80 transition">
                 <span class="text-accent-pink">&lt;</span>Back to Portfolio<span class="text-accent-pink">/&gt;</span>
             </a>
-            <div class="hidden md:block">
-                <span class="text-[10px] font-black text-accent-purple uppercase tracking-[0.3em]">Project Archive</span>
+            <div class="flex items-center gap-6">
+                <div class="hidden md:block">
+                    <span class="text-[10px] font-black text-accent-purple uppercase tracking-[0.3em]">Project Archive</span>
+                </div>
             </div>
         </header>
 
@@ -207,6 +229,8 @@
                 }
             }
 
+
+
             // Project Data Injected Content
             const projects = {
                 'welfare-demo': `
@@ -237,38 +261,50 @@
                             ${createWebFrame('consultation.png', 'Service Logging', 'Detailed auditing of interactions and professional consultations.')}
                             ${createWebFrame('stocks.png', 'Inventory Logic', 'Back-end management for physical resource distribution.')}
                         </div>
-
                         <div class="space-y-6">
                             <h3 class="text-3xl font-black text-[var(--text-main)] uppercase tracking-tighter">IV. Document Integrity</h3>
                             <div class="w-20 h-1 bg-accent-purple rounded-full"></div>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                            ${createWebFrame('certficate.png', 'Digital Credentials', 'Verified document generation for social welfare eligibility.')}
-                            ${createWebFrame('id.jpg', 'Beneficiary ID', 'Secure digital identification system with QR-base verification.')}
+                        <div class="max-w-4xl mx-auto">
+                            ${createWebFrame('certficate.png', 'Digital Credentials', 'Verified document generation for social welfare eligibility.', true)}
                         </div>
                     </div>
                 `,
                 'sellio-demo': `
                     <div class="space-y-24">
                         <div class="space-y-6">
-                            <h3 class="text-3xl font-black text-[var(--text-main)] uppercase tracking-tighter">I. Mobile Experience</h3>
+                            <h3 class="text-3xl font-black text-[var(--text-main)] uppercase tracking-tighter">I. Platform Experience</h3>
                             <div class="w-20 h-1 bg-accent-purple rounded-full"></div>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            ${createAppFrame('login.jpg', 'Secure Authentication', 'Encrypted entry point ensuring user data integrity from the first interaction.', true)}
-                            ${createAppFrame('home.jpg', 'Intuitive Discovery', 'Fluid navigation and product discovery engine with smart category filtering.')}
-                            ${createAppFrame('details.jpg', 'Deep Insights', 'Immersive product overview with high-fidelity visuals and technical specifications.')}
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            ${createAppFrame('login.jpg', 'Secure Authentication', 'Encrypted entry point ensuring user data integrity.')}
+                            ${createAppFrame('home.jpg', 'Intuitive Discovery', 'Personalized marketplace feed with smart category filtering.')}
+                            ${createAppFrame('details.jpg', 'Deep Insights', 'Immersive product overview with high-fidelity visuals.')}
                         </div>
 
                         <div class="space-y-6">
                             <h3 class="text-3xl font-black text-[var(--text-main)] uppercase tracking-tighter">II. Marketforce Hub</h3>
                             <div class="w-20 h-1 bg-accent-purple rounded-full"></div>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                            ${createAppFrame('offer.jpg', 'Smart Bidding', 'Almost real-time offer system allowing users to negotiate value dynamically.')}
-                            ${createAppFrame('bidders.jpg', 'Live Auction Board', 'Transparent leaderboard showing active interest and competitive bids.')}
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                            ${createAppFrame('offer.jpg', 'Smart Bidding', 'Almost real-time offer system allowing users to negotiate value.')}
+                            ${createAppFrame('bidders.jpg', 'Live Auction Board', 'Transparent leaderboard showing active interest.')}
                             ${createAppFrame('chat.jpg', 'P2P Messaging', 'Secure almost real-time negotiation channel.')}
-                            ${createAppFrame('location.jpg', 'Geospatial Context', 'Precise distance matrix visualization for localized trade optimization.')}
+                            ${createAppFrame('location.jpg', 'Geospatial Context', 'Precise distance matrix visualization.')}
+                        </div>
+
+                        <div class="space-y-6">
+                            <h3 class="text-3xl font-black text-[var(--text-main)] uppercase tracking-tighter">III. Safety & Blockchain Integrity</h3>
+                            <div class="w-20 h-1 bg-accent-purple rounded-full"></div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            ${createAppFrame('location_shared.jpg', 'Proximity Trust', 'Secure location synchronization for safe transaction points.')}
+                            ${createAppFrame('report.jpg', 'Vigilance System', 'Advanced reporting mechanisms to maintain quality.')}
+                            ${createAppFrame('review.jpg', 'Reputation Score', 'Multi-dimensional user feedback system.')}
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                            ${createAppFrame('blockchain_review.jpg', 'Immutable Ledger Reviews', 'Blockchain-stored feedback that cannot be altered.', true)}
+                            ${createAppFrame('transaction_details.jpg', 'Public Audit Trail', 'Complete cryptographic record of all successful milestones.', true)}
                         </div>
                     </div>
                 `,
@@ -279,8 +315,8 @@
                             <div class="w-20 h-1 bg-accent-purple rounded-full"></div>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                            ${createWebFrame('loginpage.jpg', 'Authentication Portal', 'Modern login architecture designed for a secure user experience.', true)}
-                            ${createWebFrame('news_api.jpg', 'Intelligence Feed', 'Real-time headline aggregation with advanced semantic filtering.')}
+                            ${createWebFrame('loginpage.jpg', 'Authentication Portal', 'Modern login architecture designed for a secure user experience.')}
+                            ${createWebFrame('news_api.jpg', 'Discovery Engine', 'Responsive grid system that handles massive data streams.')}
                         </div>
 
                         <div class="space-y-6">
