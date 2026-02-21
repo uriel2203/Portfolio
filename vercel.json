@@ -34,7 +34,7 @@
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "false",
-        "APP_KEY": "base64:oqqtImJv1CC2kc2pq5RxNE+7uPLzlZ3XSuwFfBbfO2g=",
+        "APP_KEY": "base64:Vz/JaWFe+0xK4xMlXO3WCJXPiqfnYZjiha7PICeSoBU=",
         "LOG_CHANNEL": "stderr",
         "DB_CONNECTION": "sqlite",
         "DB_DATABASE": ":memory:",
