@@ -262,40 +262,73 @@
                 <button id="theme-toggle-mobile" class="text-[var(--text-main)] hover:text-accent-secondary transition w-10 h-10 flex items-center justify-center rounded-xl bg-[var(--card-bg)] border border-[var(--border-color)]" onclick="toggleTheme()">
                     <svg id="theme-icon-mobile" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="18.36" x2="5.64" y2="19.78"></line><line x1="18.36" y1="4.22" x2="19.78" y2="5.64"></line></svg>
                 </button>
-                <button id="menu-btn" class="text-[var(--text-main)] hover:text-accent-secondary transition">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                <button id="menu-btn" class="text-[var(--text-main)] hover:text-accent-secondary transition relative z-[60]">
+                    <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
                 </button>
             </div>
 
-            <!-- Mobile Nav Container -->
-            <div id="mobile-menu" class="fixed top-[88px] left-0 w-full bg-[var(--primary-bg)]/95 backdrop-blur-xl border-b border-[var(--border-color)] flex flex-col items-center py-10 gap-6 transform -translate-y-full opacity-0 pointer-events-none transition-all duration-300 md:hidden z-40 text-[var(--text-main)]">
-                <a href="#home" class="text-lg font-medium hover:text-accent-secondary transition" onclick="toggleMenu()">Home</a>
-                <a href="#about" class="text-lg font-medium hover:text-accent-secondary transition" onclick="toggleMenu()">About</a>
-                <a href="#edu" class="text-lg font-medium hover:text-accent-secondary transition" onclick="toggleMenu()">Education</a>
-                <a href="#skills" class="text-lg font-medium hover:text-accent-secondary transition" onclick="toggleMenu()">Skills</a>
-                <a href="#projects" class="text-lg font-medium hover:text-accent-secondary transition" onclick="toggleMenu()">Projects</a>
-                <a href="#certs" class="text-lg font-medium hover:text-accent-secondary transition" onclick="toggleMenu()">Certificates</a>
-                <a href="#contact" class="px-8 py-3 bg-accent-primary rounded-full text-sm font-bold shadow-lg text-white" onclick="toggleMenu()">Contact Me</a>
+            <!-- Mobile Nav Container (Sidebar) -->
+            <div id="mobile-menu" class="fixed top-0 right-0 w-[280px] h-screen bg-[var(--primary-bg)] border-l border-[var(--border-color)] flex flex-col transform translate-x-full transition-transform duration-300 md:hidden z-[100] text-[var(--text-main)] shadow-2xl overflow-y-auto custom-scrollbar">
+                <!-- Sidebar Header -->
+                <div class="p-8 border-b border-[var(--border-color)]">
+                    <div class="flex flex-col leading-none">
+                        <a href="#" class="text-xl font-bold text-[var(--text-main)] flex items-center gap-1">
+                            <span class="text-accent-secondary">&lt;</span>JohnDev<span class="text-accent-secondary">/&gt;</span>
+                        </a>
+                        <span class="text-[8px] tracking-[0.3em] font-bold text-[var(--text-muted)] mt-1 uppercase">Portfolio Showcase</span>
+                    </div>
+                </div>
+
+                <!-- Sidebar Links -->
+                <div class="flex-1 px-8 py-10 flex flex-col gap-6">
+                    <a href="#home" class="flex items-center gap-4 text-[13px] font-bold uppercase tracking-widest hover:text-accent-primary transition group" onclick="toggleMenu()">
+                        <span class="w-8 h-8 rounded-lg bg-[var(--card-bg)] border border-[var(--border-color)] flex items-center justify-center group-hover:border-accent-primary transition text-[var(--text-muted)] group-hover:text-accent-primary"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></span>
+                        Home
+                    </a>
+                    <a href="#about" class="flex items-center gap-4 text-[13px] font-bold uppercase tracking-widest hover:text-accent-primary transition group" onclick="toggleMenu()">
+                        <span class="w-8 h-8 rounded-lg bg-[var(--card-bg)] border border-[var(--border-color)] flex items-center justify-center group-hover:border-accent-primary transition text-[var(--text-muted)] group-hover:text-accent-primary"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></span>
+                        About
+                    </a>
+                    <a href="#edu" class="flex items-center gap-4 text-[13px] font-bold uppercase tracking-widest hover:text-accent-primary transition group" onclick="toggleMenu()">
+                        <span class="w-8 h-8 rounded-lg bg-[var(--card-bg)] border border-[var(--border-color)] flex items-center justify-center group-hover:border-accent-primary transition text-[var(--text-muted)] group-hover:text-accent-primary"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2v-5"></path></svg></span>
+                        Education
+                    </a>
+                    <a href="#skills" class="flex items-center gap-4 text-[13px] font-bold uppercase tracking-widest hover:text-accent-primary transition group" onclick="toggleMenu()">
+                        <span class="w-8 h-8 rounded-lg bg-[var(--card-bg)] border border-[var(--border-color)] flex items-center justify-center group-hover:border-accent-primary transition text-[var(--text-muted)] group-hover:text-accent-primary"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.82-2.82l8.49-8.48"></path></svg></span>
+                        Skills
+                    </a>
+                    <a href="#projects" class="flex items-center gap-4 text-[13px] font-bold uppercase tracking-widest hover:text-accent-primary transition group" onclick="toggleMenu()">
+                        <span class="w-8 h-8 rounded-lg bg-[var(--card-bg)] border border-[var(--border-color)] flex items-center justify-center group-hover:border-accent-primary transition text-[var(--text-muted)] group-hover:text-accent-primary"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 9.4 7.55 4.24a2 2 0 0 0-2 0l-3 1.76a2 2 0 0 0-1 1.74v10.52a2 2 0 0 0 1 1.74l3 1.76a2 2 0 0 0 2 0l8.95-5.16a2 2 0 0 0 1-1.74V11.14a2 2 0 0 0-1-1.74z"></path><path d="m7.5 4.24 9 5.16 9-5.16"></path><path d="m3.29 19.05 9-5.16 9 5.16"></path></svg></span>
+                        Projects
+                    </a>
+                    <a href="#certs" class="flex items-center gap-4 text-[13px] font-bold uppercase tracking-widest hover:text-accent-primary transition group" onclick="toggleMenu()">
+                        <span class="w-8 h-8 rounded-lg bg-[var(--card-bg)] border border-[var(--border-color)] flex items-center justify-center group-hover:border-accent-primary transition text-[var(--text-muted)] group-hover:text-accent-primary"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"></path></svg></span>
+                        Certificates
+                    </a>
+                </div>
+
+                <!-- Sidebar Footer -->
+                <div class="p-8 border-t border-[var(--border-color)] space-y-6">
+                    <a href="#contact" class="w-full px-6 py-4 bg-accent-primary rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] shadow-xl text-white text-center hover:scale-105 transition block" onclick="toggleMenu()">
+                        Contact Me
+                    </a>
+                    <div class="flex justify-center gap-4 text-[var(--text-muted)]">
+                        <a href="https://github.com/uriel2203" target="_blank" class="hover:text-accent-primary transition"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
+                        <a href="https://www.facebook.com/urieljohn.pascual" target="_blank" class="hover:text-accent-primary transition"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+                        <a href="#" class="hover:text-accent-primary transition"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+                        <a href="#" class="hover:text-accent-primary transition"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+                    </div>
+                </div>
             </div>
+
+            <!-- Mobile Overlay -->
+            <div id="menu-overlay" class="fixed inset-0 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-300 z-[90] md:hidden" onclick="toggleMenu()"></div>
         </header>
 
-        <script>
-            function toggleMenu() {
-                const menu = document.getElementById('mobile-menu');
-                const isOpen = !menu.classList.contains('-translate-y-full');
-                
-                if (isOpen) {
-                    menu.classList.add('-translate-y-full', 'opacity-0', 'pointer-events-none');
-                } else {
-                    menu.classList.remove('-translate-y-full', 'opacity-0', 'pointer-events-none');
-                }
-            }
 
-            document.getElementById('menu-btn').addEventListener('click', toggleMenu);
-        </script>
 
         <!-- Hero Section -->
-        <section id="home" class="relative min-h-screen flex items-center px-6 md:px-[9%] py-12 md:py-20 overflow-hidden">
+        <section id="home" class="relative min-h-[110vh] md:min-h-screen flex items-center px-6 md:px-[9%] pt-28 pb-12 md:py-20 overflow-hidden">
             <!-- Background Nebula Effect -->
             <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-accent-primary/10 to-transparent pointer-events-none"></div>
 
@@ -355,8 +388,8 @@
                     
                 </div>
                 
-                <div class="relative order-1 lg:order-2 flex justify-center">
-                    <div class="relative rounded-[3rem] overflow-hidden border border-[var(--border-color)] group shadow-2xl w-full max-w-[320px] lg:max-w-[80%] lg:ml-auto">
+                <div class="relative order-1 lg:order-2 flex justify-center mb-12 lg:mb-0">
+                    <div class="relative rounded-[3rem] overflow-hidden border border-[var(--border-color)] group shadow-2xl w-full max-w-[280px] md:max-w-[320px] lg:max-w-[80%] lg:ml-auto">
                         <img src="{{ $profile->image }}" alt="John" class="w-full aspect-[4/5] object-cover transition duration-1000 group-hover:scale-105">
                     </div>
 
@@ -1544,6 +1577,25 @@
                 const modal = document.getElementById('projectDemoModal');
                 modal.classList.add('hidden');
                 document.body.style.overflow = 'auto';
+            }
+
+            function toggleMenu() {
+                const menu = document.getElementById('mobile-menu');
+                const overlay = document.getElementById('menu-overlay');
+                const menuIcon = document.getElementById('menu-icon');
+                const isOpen = !menu.classList.contains('translate-x-full');
+                
+                if (isOpen) {
+                    menu.classList.add('translate-x-full');
+                    overlay.classList.add('opacity-0', 'pointer-events-none');
+                    menuIcon.innerHTML = '<line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>';
+                    document.body.style.overflow = 'auto';
+                } else {
+                    menu.classList.remove('translate-x-full');
+                    overlay.classList.remove('opacity-0', 'pointer-events-none');
+                    menuIcon.innerHTML = '<line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>';
+                    document.body.style.overflow = 'hidden';
+                }
             }
 
             document.getElementById('menu-btn').addEventListener('click', toggleMenu);
