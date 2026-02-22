@@ -202,6 +202,14 @@ class PortfolioController extends Controller
                 'github_link' => 'https://github.com/uriel2203/News',
                 'demo_id' => 'news-demo'
             ],
+            (object)[
+                'title' => 'Happy Day',
+                'description' => 'A delightful platform for personalized occasion-based greetings. Whether it\'s a birthday, holiday, or special milestone, this site helps you celebrate with the perfect visual message.',
+                'image' => asset('image/homepage.jpg'),
+                'github_link' => 'https://github.com/uriel2203/happyday',
+                'live_link' => 'https://happyday-vert.vercel.app/',
+                'demo_id' => 'happy-day-demo'
+            ],
         ];
 
         return compact('profile', 'experiences', 'certificates', 'tools', 'projects');

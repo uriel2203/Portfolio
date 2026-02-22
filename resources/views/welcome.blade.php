@@ -685,6 +685,12 @@
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                                     </div>
                                     @endif
+
+                                    @if(isset($project->live_link))
+                                    <a href="{{ $project->live_link }}" target="_blank" class="w-12 h-12 rounded-2xl bg-accent-primary/10 border border-accent-primary/20 flex items-center justify-center text-accent-primary hover:bg-accent-primary hover:text-white group/live transition-all shadow-lg shadow-accent-primary/10" title="View Live Site">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="group-hover/live:scale-110 group-hover/live:rotate-12 transition-all"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                                    </a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -1528,6 +1534,65 @@
                                     ${createWebFrame('sports.jpg', 'Sports Arena', 'High-impact layout for dynamic sports coverage and almost real-time event updates.')}
                                     ${createWebFrame('business.jpg', 'Business Insights', 'Clean, data-focused interface for corporate headlines and market trends.')}
                                     ${createWebFrame('health.jpg', 'Health & Science', 'Dedicated space for wellness breakthroughs and medical news discovery.')}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } else if (demoId === 'happy-day-demo') {
+                    title.textContent = 'Happy Day Greetings';
+                    content.innerHTML = `
+                        <div class="space-y-20 pb-20">
+                            <!-- Hero Section -->
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                                <div class="space-y-8">
+                                    <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-pink-500/10 border border-pink-500/20">
+                                        <svg class="text-pink-500" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.84-8.84 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                                        <span class="text-[10px] font-black uppercase tracking-widest text-pink-500">Celebration Platform</span>
+                                    </div>
+                                    <div class="space-y-4">
+                                        <h3 class="text-5xl font-black text-[var(--text-main)] leading-tight">Happy Day: <span class="text-gradient">Greeting</span> Hub</h3>
+                                        <p class="text-[var(--text-muted)] text-lg leading-relaxed max-w-xl">A personalized greeting platform designed to spread joy across every occasion. From heart-warming Valentine's cards to celebratory New Year messages, Happy Day makes every moment special.</p>
+                                    </div>
+                                    
+                                    <div class="flex flex-wrap gap-4">
+                                        <div class="px-6 py-4 rounded-[2rem] bg-[var(--text-main)]/5 border border-[var(--border-color)] backdrop-blur-sm">
+                                            <h4 class="text-accent-secondary text-[8px] font-black uppercase tracking-widest mb-1">Purpose</h4>
+                                            <p class="text-[var(--text-main)] font-bold text-sm">Personalized Greetings</p>
+                                        </div>
+                                        <div class="px-6 py-4 rounded-[2rem] bg-[var(--text-main)]/5 border border-[var(--border-color)] backdrop-blur-sm">
+                                            <h4 class="text-accent-primary text-[8px] font-black uppercase tracking-widest mb-1">Visual Design</h4>
+                                            <p class="text-[var(--text-main)] font-bold text-sm">Occasion-Specific Themes</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="relative group">
+                                    <div class="absolute -inset-4 bg-pink-500/20 blur-3xl opacity-50 group-hover:opacity-100 transition duration-1000"></div>
+                                    <div class="relative aspect-video rounded-[3rem] overflow-hidden border border-[var(--border-color)] shadow-2xl bg-[#0b011d]">
+                                        <img src="{{ asset('image/homepage.jpg') }}" class="w-full h-full object-cover object-top hover:scale-110 transition-transform duration-700">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-8">
+                                            <p class="text-white font-black text-[10px] uppercase tracking-widest">Happy Day Homepage</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Showcase: All Occasions -->
+                            <div class="space-y-24">
+                                <div class="text-center space-y-2">
+                                    <h4 class="text-2xl font-black text-[var(--text-main)] uppercase tracking-tighter">Special Moments</h4>
+                                    <div class="w-20 h-1 bg-pink-500 mx-auto rounded-full"></div>
+                                </div>
+                                
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                                    ${createWebFrame('valentines.jpg', 'Valentine\'s Day', 'Romantic and elegant themes to express love and appreciation on the most romantic day of the year.')}
+                                    ${createWebFrame('birthday.jpg', 'Birthday Celebration', 'Joyful and vibrant designs to make every birthday boy or girl feel truly celebrated.')}
+                                    ${createWebFrame('christmas.jpg', 'Merry Christmas', 'Festive and cozy layouts capturing the holiday spirit with classic seasonal elements.')}
+                                    ${createWebFrame('newyear.jpg', 'Happy New Year', 'Bright and energetic countdown themes to welcome a fresh start with optimism.')}
+                                </div>
+
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                                    ${createWebFrame('fathers.jpg', 'Father\'s Day', 'Strong and meaningful designs to honor fathers and father figures for their guidance.')}
+                                    ${createWebFrame('mothers.jpg', 'Mother\'s Day', 'Gentle and beautiful themes to celebrate the unconditional love of mothers.')}
                                 </div>
                             </div>
                         </div>
