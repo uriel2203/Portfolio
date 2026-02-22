@@ -306,13 +306,13 @@
                         <span class="w-8 h-8 rounded-lg bg-[var(--card-bg)] border border-[var(--border-color)] flex items-center justify-center group-hover:border-accent-primary transition text-[var(--text-muted)] group-hover:text-accent-primary"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"></path></svg></span>
                         Certificates
                     </a>
-                </div>
-
-                <!-- Sidebar Footer -->
-                <div class="p-8 border-t border-[var(--border-color)] space-y-6">
-                    <a href="#contact" class="w-full px-6 py-4 bg-accent-primary rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] shadow-xl text-white text-center hover:scale-105 transition block" onclick="toggleMenu()">
+                    <a href="#contact" class="flex items-center gap-4 text-[13px] font-bold uppercase tracking-widest hover:text-accent-primary transition group" onclick="toggleMenu()">
+                        <span class="w-8 h-8 rounded-lg bg-[var(--card-bg)] border border-[var(--border-color)] flex items-center justify-center group-hover:border-accent-primary transition text-[var(--text-muted)] group-hover:text-accent-primary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </span>
                         Contact Me
                     </a>
+               <hr class="border-t border-gray-300 opacity-30 my-2">
                     <div class="flex justify-center gap-4 text-[var(--text-muted)]">
                         <a href="https://github.com/uriel2203" target="_blank" class="hover:text-accent-primary transition"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
                         <a href="https://www.facebook.com/urieljohn.pascual" target="_blank" class="hover:text-accent-primary transition"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
