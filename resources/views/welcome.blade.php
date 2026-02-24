@@ -439,7 +439,7 @@
                             </p>
 
                             <p class="text-justify">
-                                I have strong skills in both backend and frontend development. I create secure APIs, manage databases, design responsive layouts, and improve performance to make reliable and scalable web solutions. 
+                                I have experience in both backend and frontend development. I create secure APIs, manage databases, design responsive layouts, and improve performance to make reliable and scalable web solutions. 
                             </p> 
 
                             <p class="text-justify">
@@ -1309,17 +1309,17 @@
                                     </div>
                                     <div class="space-y-4">
                                         <h3 class="text-5xl font-black text-black leading-tight">Sellio: <span class="text-gradient">Blockchain</span> Marketplace</h3>
-                                        <p class="text-white/60 text-lg leading-relaxed max-w-xl">A decentralized Android ecosystem designed to eliminate transaction fraud through smart contracts and peer-to-peer transparency. This capstone project redefines trust in digital trade.</p>
+                                        <p class="text-black/60 text-lg leading-relaxed max-w-xl">A decentralized Android ecosystem designed to eliminate transaction fraud through smart contracts and peer-to-peer transparency. This capstone project redefines trust in digital trade.</p>
                                     </div>
                                     
                                     <div class="flex flex-wrap gap-4">
-                                        <div class="px-6 py-4 rounded-[2rem] bg-white/5 border border-white/5 backdrop-blur-sm">
+                                        <div class="px-6 py-4 rounded-[2rem] bg-[var(--text-main)]/5 border border-[var(--border-color)] backdrop-blur-sm">
                                             <h4 class="text-accent-secondary text-[8px] font-black uppercase tracking-widest mb-1">My Strategic Role</h4>
-                                            <p class="text-white font-bold text-sm">System Analyst & Architecture</p>
+                                            <p class="text-black font-bold text-sm">System Analyst & Architecture</p>
                                         </div>
-                                        <div class="px-6 py-4 rounded-[2rem] bg-white/5 border border-white/5 backdrop-blur-sm">
+                                        <div class="px-6 py-4 rounded-[2rem] bg-[var(--text-main)]/5 border border-[var(--border-color)] backdrop-blur-sm">
                                             <h4 class="text-cyan-400 text-[8px] font-black uppercase tracking-widest mb-1">Architecture</h4>
-                                            <p class="text-white font-bold text-sm">Web3 & Node.js Microservices</p>
+                                            <p class="text-black font-bold text-sm">Web3 & Node.js Microservices</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1345,7 +1345,7 @@
                             <!-- App Showcase: Category 1 -->
                             <div class="space-y-12">
                                 <div class="text-center space-y-2">
-                                    <h4 class="text-2xl font-black text-white uppercase tracking-tighter">I. Platform Experience</h4>
+                                    <h4 class="text-2xl font-black text-black uppercase tracking-tighter">I. Platform Experience</h4>
                                     <div class="w-20 h-1 bg-accent-primary mx-auto rounded-full"></div>
                                 </div>
                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -1358,7 +1358,7 @@
                             <!-- App Showcase: Category 2 -->
                             <div class="space-y-12">
                                 <div class="text-center space-y-2">
-                                    <h4 class="text-2xl font-black text-white uppercase tracking-tighter">II. Marketforce Hub</h4>
+                                    <h4 class="text-2xl font-black text-black uppercase tracking-tighter">II. Marketforce Hub</h4>
                                     <div class="w-20 h-1 bg-accent-secondary mx-auto rounded-full"></div>
                                 </div>
                                 <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -1372,7 +1372,7 @@
                             <!-- App Showcase: Category 3 -->
                             <div class="space-y-12">
                                 <div class="text-center space-y-2">
-                                    <h4 class="text-2xl font-black text-white uppercase tracking-tighter">III. Safety & Blockchain Integrity</h4>
+                                    <h4 class="text-2xl font-black text-black uppercase tracking-tighter">III. Safety & Blockchain Integrity</h4>
                                     <div class="w-20 h-1 bg-cyan-400 mx-auto rounded-full"></div>
                                 </div>
                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
