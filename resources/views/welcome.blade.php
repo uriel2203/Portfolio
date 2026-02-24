@@ -1308,7 +1308,7 @@
                                         <span class="text-[10px] font-black uppercase tracking-widest text-accent-primary">Capstone Project 2024</span>
                                     </div>
                                     <div class="space-y-4">
-                                        <h3 class="text-5xl font-black text-white leading-tight">Sellio: <span class="text-gradient">Blockchain</span> Marketplace</h3>
+                                        <h3 class="text-5xl font-black text-black leading-tight">Sellio: <span class="text-gradient">Blockchain</span> Marketplace</h3>
                                         <p class="text-white/60 text-lg leading-relaxed max-w-xl">A decentralized Android ecosystem designed to eliminate transaction fraud through smart contracts and peer-to-peer transparency. This capstone project redefines trust in digital trade.</p>
                                     </div>
                                     
